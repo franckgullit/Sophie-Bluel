@@ -35,18 +35,13 @@ fetch("http://localhost:5678/api/categories",)
     .then(category => {
         console.log(category)
 
-// adding object 'categories' to table
-category.unshift({
-    id: 0,
-    name: "Tous",
-});
-
-    let categoriesElements = document.getElementById("works-categories");
-    category.forEach(
-        category =>{
-    let div = document.createElement("div");
-    div.classList.add("category-item");
-    div.innerText = category.name;
-    div.dataset.id = category.id;
-    categoriesElements.appendChild(div);
-   }) })
+        let categoryElement = document.getElementsByClassName("gallery");
+        category.forEach(
+            category => {
+                let div = document.createElement("div");
+                div.classList.add("category-item");
+                div.innerText = category.name;
+                div.dataset.id = category.id;
+                categoryElement.appendChild(div);
+            })
+    })
