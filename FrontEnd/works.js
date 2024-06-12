@@ -1,5 +1,4 @@
 //recuperation des donnees des travaux via l'API
-
 fetch("http://localhost:5678/api/works",)
     .then(response => response.json())
     .then(data => {
@@ -30,18 +29,36 @@ fetch("http://localhost:5678/api/works",)
     })
 
 //recuperation des differentes Categories via API
-fetch("http://localhost:5678/api/categories",)
+fetch("http://localhost:5678/api/categories")
     .then(response => response.json())
-    .then(category => {
-        console.log(category)
+    .then(categories => {
+        console.log(categories)
 
-        let categoryElement = document.getElementsByClassName("gallery");
-        category.forEach(
+        //filter buttons
+        filters = document.createElement("div");
+        filters.classList.add("button");
+        anybutton = document.createElement("button");
+        button.classlist.add("filter-button");
+        anyButton.textContent = "Tous";
+        filters.appendChild(anybutton);
+
+
+        let categoriesElement = document.querySelector(".category");
+        categories.forEach(
             category => {
-                let div = document.createElement("div");
-                div.classList.add("category-item");
+                button = document.createElement("button");
+                button.textContent = category;
                 div.innerText = category.name;
                 div.dataset.id = category.id;
-                categoryElement.appendChild(div);
+                categoriesElement.appendChild(div);
+                button.addEventListener("click", () => {
+                    filter-button(category);
+                })
             })
+
+
     })
+
+
+
+
