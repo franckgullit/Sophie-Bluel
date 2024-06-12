@@ -1,4 +1,5 @@
 //recuperation des donnees des travaux via l'API
+
 fetch("http://localhost:5678/api/works",)
     .then(response => response.json())
     .then(data => {
@@ -42,7 +43,6 @@ fetch("http://localhost:5678/api/categories")
         anyButton.textContent = "Tous";
         filters.appendChild(anybutton);
 
-
         let categoriesElement = document.querySelector(".category");
         categories.forEach(
             category => {
@@ -50,6 +50,8 @@ fetch("http://localhost:5678/api/categories")
                 button.textContent = category;
                 div.innerText = category.name;
                 div.dataset.id = category.id;
+
+        //adding categories to div containing buttons
                 categoriesElement.appendChild(div);
                 button.addEventListener("click", () => {
                     filter-button(category);
@@ -58,7 +60,3 @@ fetch("http://localhost:5678/api/categories")
 
 
     })
-
-
-
-
