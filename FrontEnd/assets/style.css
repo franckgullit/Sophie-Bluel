@@ -186,3 +186,29 @@ footer nav ul {
 	margin: 2em
 }
 
+/* for filter buttons */
+
+.filters{
+	width: 585px;
+	margin:auto;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 49px;
+	margin-top: 56px;
+}
+
+.filter-button{
+	height:37px;
+    border: 1px solid #1D6154;
+    border-radius: 60px;
+	padding: 4px 20px 4px 20px;
+}
+
+.filter-button-txt{
+	font-family: Syne;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 19.2px;
+	text-align: center;
+	color:#1D6154
+}
