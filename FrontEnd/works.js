@@ -39,13 +39,14 @@ fetch("http://localhost:5678/api/categories")
 
         //filter buttons
         filters = document.createElement("div");
+        button = document.createElement("button");
         filters.classList.add("button");
         anybutton = document.createElement("button");
         button.classlist.add("filter-button");
         anyButton.textContent = "Tous";
         filters.appendChild(anybutton);
 
-        let categoriesElement = document.querySelector(".category");
+        let categoriesElement = document.querySelector(".filters");
         categories.forEach(
             category => {
                 button = document.createElement("button");
@@ -60,7 +61,3 @@ fetch("http://localhost:5678/api/categories")
                 })
             })
     }
-
-
-
-
