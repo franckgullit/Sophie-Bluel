@@ -319,18 +319,17 @@ footer nav ul {
 
 /*for login page*/
 
-.login-page{
-	flex-direction: column;
-	height: 100vh;
-	justify-content: space-between;
-}
-
 .login {
 	width: 50%;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+.login-page-links img{
+	width: 22px;
+	height: 22px;
 }
 
 .log-in-form {
@@ -378,4 +377,17 @@ footer nav ul {
 .log-in-form input:hover{
 	border-color: skyblue;
 	border-style: double;
+}
+
+.login-page footer{
+	height:60px;
+	background-color:white;
+	display: flex;
+	justify-content: end;
+	margin: 2em;
+}
+
+.login-page footer li{
+font-size: 14px;
+font-weight: 300;
 }
