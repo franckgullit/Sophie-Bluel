@@ -68,7 +68,7 @@ function displaycategories(categories) {
 
         const gallery = document.querySelectorAll(".gallery");
 
-        gallery.forEach((item) => {
+        gallery.forEach((category) => {
             const Category = category.getAttribute("category");
 
         })
