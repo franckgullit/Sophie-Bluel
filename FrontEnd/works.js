@@ -37,42 +37,43 @@ fetch("http://localhost:5678/api/categories")
 function displaycategories(categories) {
     console.log(categories)
 
-    let categoriesElement = document.querySelector(".filters");
+    let filters = document.getElementById("filters");
+
+    const categories = ['Tous', 'Objets', 'Appartements', 'Hotels & restaurants'];
+
     categories.forEach(
         category => {
-            categories.add(category.name);
-            categories.add(category.ID);
 
             //filter buttons//
-            filters = document.createElement("div");
-            filters.classlist.add("button");
-            gallery.parentNode.insertBefore(filters, gallery);
-
-            // Creating Tous filter button//
-            const button = document.createElement("button");
-            button.classlist.add("filter-button");
-            button.textcontent = "Tous";
-            filters.appendChild(button);
-
-            // Adding event listener//
+            const button = document.createElement("filter-button");
+            button.textContent = "category";
             button.addEventListener("click", () => {
-                (gallery.innerHTML = ""), data();
+                filterGallery(category, gallery);
+                setActiveCategory(button);
+            });
 
-                //adding to DOM//
-                filters.appendChild(button);
-            })
-        })
+            filters.appendChild(button);
+        });
 
-    //gallery filtering//
-    function galleryfiltering(category) {
-
-        const gallery = document.querySelectorAll(".gallery");
-
-        gallery.forEach((category) => {
-            const Category = category.getAttribute("category");
-
-        })
-    }
+    //Tous button//
+    const Tousbutton = filters.querySelector("button");
+    Tousbutton.classList.add("active");
 }
+
+//Gallery filtering//
+function filterGallery(category, gallery) {
+    if (category === "Tous") {
+        displayGallery(gallery);
+    } else {
+        const filteredGallery = gallery.filters(gallery => gallery.category.name === category);
+        displayGallery(filteredGallery);
+    }
+
+}
+
+
+
+
+
 
 
