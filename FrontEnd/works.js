@@ -4,10 +4,16 @@ fetch("http://localhost:5678/api/works")
     .then(response => response.json())
     .then(data => displayGallery(data))
 function displayGallery(data) {
+   
     console.log(data)
-
+    
     let gallery = document.querySelector(".gallery");
+
+    // Emptying Gallery//
+    gallery.innerHTML = "";
+
     data.forEach(
+        
         item => {
             let figureElement = document.createElement("figure");
 
@@ -28,6 +34,7 @@ function displayGallery(data) {
             // adding created figures to gallery//
             gallery.appendChild(figureElement)
         })
+        
 }
 
 //recuperation des differentes Categories via API//
@@ -37,7 +44,7 @@ fetch("http://localhost:5678/api/categories")
 function displaycategories(categories) {
     console.log(categories)
 
-    let filters = document.getElementById("filters");
+    let filter = document.getElementById("filters");
 
     //Tous button//
     createfilterbutton("Tous")
