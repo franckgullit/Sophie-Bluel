@@ -1,5 +1,5 @@
+let data = []
 //recuperation des donnees des travaux via l'API//
-let data=[]
 fetch("http://localhost:5678/api/works")
     .then(response => response.json())
     .then(data => displayGallery(data))
@@ -57,16 +57,12 @@ function createfilterbutton(category) {
     textbutton.classList.add("filter-button-txt")
     button.appendChild(textbutton)
 
-//adding event listener
+    //adding event listener//
     button.addEventListener("click", () => {
         filterGallery(category, data);
     });
 
     filters.appendChild(button);
-}
-
-function setactivecategory(category){
-
 }
 
 //Gallery filtering//
@@ -77,12 +73,17 @@ function filterGallery(category, data) {
         const filteredGallery = data.filter(item => item.category.name === category);
         displayGallery(filteredGallery);
     }
-
 }
 
+//setting active category//
+function setactivecategory(activebutton) {
+    const data = activebutton.target.dataset.id;
+    displayGallery(data);
 
+    const filterbutton = document.getElementsByClassName("filter-button");
+    for(let item of data){
+        item.classList.remove("active");
+        activebutton.target.classList.add("active");
+    }
 
-
-
-
-
+}
