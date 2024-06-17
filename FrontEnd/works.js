@@ -1,5 +1,5 @@
 //recuperation des donnees des travaux via l'API//
-
+let data=[]
 fetch("http://localhost:5678/api/works")
     .then(response => response.json())
     .then(data => displayGallery(data))
@@ -39,33 +39,42 @@ function displaycategories(categories) {
 
     let filters = document.getElementById("filters");
 
-    const categories = ['Tous', 'Objets', 'Appartements', 'Hotels & restaurants'];
+    //Tous button//
+    createfilterbutton("Tous")
 
     categories.forEach(
-        category => {
+        category =>
+            createfilterbutton(category.name)
+    );
+}
 
-            //filter buttons//
-            const button = document.createElement("filter-button");
-            button.textContent = "category";
-            button.addEventListener("click", () => {
-                filterGallery(category, gallery);
-                setActiveCategory(button);
-            });
+//filter buttons//
+function createfilterbutton(category) {
+    const button = document.createElement("button");
+    const textbutton = document.createElement("span");
+    textbutton.textContent = category;
+    button.classList.add("filter-button")
+    textbutton.classList.add("filter-button-txt")
+    button.appendChild(textbutton)
 
-            filters.appendChild(button);
-        });
+//adding event listener
+    button.addEventListener("click", () => {
+        filterGallery(category, data);
+    });
 
-    //Tous button//
-    const Tousbutton = filters.querySelector("button");
-    Tousbutton.classList.add("active");
+    filters.appendChild(button);
+}
+
+function setactivecategory(category){
+
 }
 
 //Gallery filtering//
-function filterGallery(category, gallery) {
+function filterGallery(category, data) {
     if (category === "Tous") {
-        displayGallery(gallery);
+        displayGallery(data);
     } else {
-        const filteredGallery = gallery.filters(gallery => gallery.category.name === category);
+        const filteredGallery = data.filter(item => item.category.name === category);
         displayGallery(filteredGallery);
     }
 
