@@ -4,16 +4,16 @@ fetch("http://localhost:5678/api/works")
     .then(response => response.json())
     .then(data => displayGallery(data))
 function displayGallery(data) {
-   
+
     console.log(data)
-    
+
     let gallery = document.querySelector(".gallery");
 
     // Emptying Gallery//
     gallery.innerHTML = "";
 
     data.forEach(
-        
+
         item => {
             let figureElement = document.createElement("figure");
 
@@ -34,7 +34,7 @@ function displayGallery(data) {
             // adding created figures to gallery//
             gallery.appendChild(figureElement)
         })
-        
+
 }
 
 //recuperation des differentes Categories via API//
@@ -84,13 +84,11 @@ function filterGallery(category, data) {
 
 //setting active category//
 function setactivecategory(activebutton) {
-    const data = activebutton.target.dataset.id;
-    displayGallery(data);
-
-    const filterbutton = document.getElementsByClassName("filter-button");
-    for(let item of data){
-        item.classList.remove("active");
-        activebutton.target.classList.add("active");
-    }
-
+    const filters = document.querySelectorAll("filters filter-button");
+    filters.forEach(button => {
+        button.classList.remove("active");
+    });
+    activebutton.classlist.add("active");
+   
 }
+
