@@ -1,41 +1,39 @@
-let data = []
+
 //recuperation des donnees des travaux via l'API//
-fetch("http://localhost:5678/api/works")
-    .then(response => response.json())
-    .then(data => displayGallery(data))
-function displayGallery(data) {
+const response = await fetch("http://localhost:5678/api/works");
+const data = await response.json();
+displayGallery(data)
 
-    console.log(data)
+console.log(data)
 
-    let gallery = document.querySelector(".gallery");
+let gallery = document.querySelector(".gallery");
 
-    // Emptying Gallery//
-    gallery.innerHTML = "";
+// Emptying Gallery//
+gallery.innerHTML = "";
 
-    data.forEach(
+data.forEach(
 
-        item => {
-            let figureElement = document.createElement("figure");
+    item => {
+        let figureElement = document.createElement("figure");
 
-            //creating image element//
-            const imgElement = document.createElement("img");
-            imgElement.src = item.imageUrl;
+        //creating image element//
+        const imgElement = document.createElement("img");
+        imgElement.src = item.imageUrl;
 
-            //adding created image to figure element//
-            figureElement.appendChild(imgElement);
+        //adding created image to figure element//
+        figureElement.appendChild(imgElement);
 
-            //creating caption//
-            const figcaptionElement = document.createElement("h3");
-            figcaptionElement.innerText = item.title;
+        //creating caption//
+        const figcaptionElement = document.createElement("h3");
+        figcaptionElement.innerText = item.title;
 
-            //adding caption to figure//
-            figureElement.appendChild(figcaptionElement)
+        //adding caption to figure//
+        figureElement.appendChild(figcaptionElement)
 
-            // adding created figures to gallery//
-            gallery.appendChild(figureElement)
-        })
+        // adding created figures to gallery//
+        gallery.appendChild(figureElement)
+    })
 
-}
 
 //recuperation des differentes Categories via API//
 fetch("http://localhost:5678/api/categories")
@@ -89,6 +87,6 @@ function setactivecategory(activebutton) {
         button.classList.remove("active");
     });
     activebutton.classlist.add("active");
-   
+
 }
 
