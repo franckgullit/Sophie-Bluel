@@ -2,38 +2,39 @@
 //recuperation des donnees des travaux via l'API//
 const response = await fetch("http://localhost:5678/api/works");
 const data = await response.json();
-displayGallery(data)
-
+displayGallery(data);
 console.log(data)
 
-let gallery = document.querySelector(".gallery");
+function displayGallery(data) {
 
-// Emptying Gallery//
-gallery.innerHTML = "";
+    let gallery = document.querySelector(".gallery");
 
-data.forEach(
+    // Emptying Gallery//
+    gallery.innerHTML = "";
 
-    item => {
-        let figureElement = document.createElement("figure");
+    data.forEach(
 
-        //creating image element//
-        const imgElement = document.createElement("img");
-        imgElement.src = item.imageUrl;
+        item => {
+            let figureElement = document.createElement("figure");
 
-        //adding created image to figure element//
-        figureElement.appendChild(imgElement);
+            //creating image element//
+            const imgElement = document.createElement("img");
+            imgElement.src = item.imageUrl;
 
-        //creating caption//
-        const figcaptionElement = document.createElement("h3");
-        figcaptionElement.innerText = item.title;
+            //adding created image to figure element//
+            figureElement.appendChild(imgElement);
 
-        //adding caption to figure//
-        figureElement.appendChild(figcaptionElement)
+            //creating caption//
+            const figcaptionElement = document.createElement("h3");
+            figcaptionElement.innerText = item.title;
 
-        // adding created figures to gallery//
-        gallery.appendChild(figureElement)
-    })
+            //adding caption to figure//
+            figureElement.appendChild(figcaptionElement)
 
+            // adding created figures to gallery//
+            gallery.appendChild(figureElement)
+        })
+}
 
 //recuperation des differentes Categories via API//
 fetch("http://localhost:5678/api/categories")
