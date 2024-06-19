@@ -24,11 +24,14 @@ function addingsubmitlistener() {
             if (submittedform.match) {
                 const data = response.json()
                     .then(data => localStorage.setItem);
-                location.href = "index.html";
+                location.href = 'index.html';
             } else {
-                errorMessage.textContent = "Email ou mot de passe incorrect";
-                errorMessage.style.display = "block";
+                errorMessage.textContent = 'Email ou mot de passe incorrect';
+                errorMessage.style.display = 'block';
             }
+         } catch (error) {
+                console.error('Erreur:', error);
+                errorMessage.style.display = 'block';
         }
     });
 }
