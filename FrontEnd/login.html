@@ -20,30 +20,22 @@
             <ul>
                 <li>projets</li>
                 <li>contact</li>
-                <li>login</li>
+                <li><a href="login.html">login</a></li>
                 <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="login">
-            <h2>Log In</h2>
-
-            <form class="log-in-form">
-                <label for="email">E-mail</label>
-                <input type="email" class="email-input">
-
-                <label for="password">Mot de Passe</label>
-                <input type="password" class="pw-input">
-            </form>
-
-            <div class="submit-button">
-                <input type="submit" value="Se connecter">
-            </div>
-
-            <span>Mot de passe oublié</span>
-
-        </section>
+    <main id="login">
+        <h2>Log In</h2>
+        <form id="login-form" action="#" method="post">
+            <label for="email">Email</label>
+            <input type="email" name="email-input" id="email">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password-input" id="password">
+            <div id="error-message" style="color: red; display: none;"></div>
+            <input type="submit" value="Se connecter">
+            <button type="button">Mot de passe oublié</button>
+        </form>
     </main>
     <footer>
         <nav>
