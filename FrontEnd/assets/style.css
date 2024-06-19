@@ -292,7 +292,7 @@ footer nav ul {
 
 /* for filter buttons */
 
-.filters {
+#filters {
 	width: 585px;
 	margin: auto;
 	display: flex;
@@ -319,75 +319,92 @@ footer nav ul {
 
 /*for login page*/
 
-.login {
+#login {
 	width: 50%;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	margin: 100px auto;
+	text-align: center;
 }
 
-.login-page-links img{
+.login-page-links img {
 	width: 22px;
 	height: 22px;
 }
 
-.log-in-form {
+.login-page-links a {
+	text-decoration: none;
+}
+
+.login-page-links a:hover {
+	font-weight: bolder;
+	color: black;
+}
+
+#login h2 {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154;
+	margin-bottom: 20px;
+}
+
+#login form {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	gap:10px;
+	align-items: center;
+	text-align: left;
 }
 
-.login h2 {
-	text-align: center;
-	margin-bottom: 35px;
-	margin-top: 33px;
+#login label {
+	margin: 2em 0 0.5em 0;
+	display: flex;
+	width: 70%
 }
 
-.log-in-form label {
-	margin-left: 92px;
-}
-
-.log-in-form input {
-	width: 379px;
-	height: 51px;
-	box-shadow: 0px 4px 14px 0px #00000017;
+#login input[type="email"],
+#login input[type="password"] {
+	width: 70%;
+	height: 50px;
 	font-size: 1.2em;
-	align-self: center;
-	background-color: #FFFFFF;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 0 10px;
 }
 
-.login span {
+#login input[type="submit"] {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: 2em auto;
+	width: 180px;
 	text-align: center;
+	border-radius: 50px;
+	border: none;
+	padding: 15px;
+	cursor: pointer;
+}
+
+#login button {
+	background: none;
+	border: none;
+	color: black;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+#login button:hover {
 	text-decoration: underline;
 }
 
-.submit-button input {
-	height:36px;
-	display: flex;
-	justify-content: center;
-}
-
-.login-page-links li:hover{
-	font-weight: bold;
-	color:black;
-}
-
-.log-in-form input:hover{
-	border-color: skyblue;
-	border-style: double;
-}
-
-.login-page footer{
-	height:60px;
-	background-color:white;
+.login-page footer {
+	height: 60px;
+	background-color: white;
 	display: flex;
 	justify-content: end;
 	margin: 2em;
 }
 
-.login-page footer li{
-font-size: 14px;
-font-weight: 300;
+.login-page footer li {
+	font-size: 14px;
+	font-weight: 300;
 }
