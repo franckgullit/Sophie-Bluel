@@ -7,6 +7,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src= works.js type="modules"></script>
@@ -36,7 +37,12 @@
 		</article>
 	</section>
 	<section id="portfolio">
+		<div class="portfolio-header">
 		<h2>Mes Projets</h2>
+		<button id="edit-button" class="hidden-edit-button">
+			<i class="fa-regular fa-pen-to-square"></i> modifier
+		</button>
+		</div>
 
 	<!-- creating category filter buttons-->
 	<div id ="filters">
@@ -69,5 +75,31 @@
 		</ul>
 	</nav>
 </footer>
+
+<!--modal window-->
+<aside id="modal" class="modal-pop-up-window" aria-hidden="true" role="dialog" aria-modal="false">
+	<div class="modal-window">
+		<span class="close-button">&times;</span>
+	<h2 id= "modal-title"> Galerie Photo</h2>
+	<div class="modal-gallery">
+		<figure>
+			<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
+			<i class="fa-solid fa-trash-can"></i>
+		</figure>
+			<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
+			<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
+			<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
+			<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
+			<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
+			<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
+			<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
+			<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
+			<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
+			<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
+	</div>
+	<div class="separator"></div>
+        <button id="add-photo-button">Ajouter une photo</button>
+	</div>
+</aside>
 </body>
 </html>
