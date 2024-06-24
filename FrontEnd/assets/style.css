@@ -437,6 +437,7 @@ footer nav ul {
     display: flex;
     align-items: center;
     width: 10px;
+	display: none;
 }
 
 .modal-pop-up-window {
@@ -500,3 +501,23 @@ footer nav ul {
 	display: flex;
 	flex-direction: row;
 }
+
+.separator {
+    border: 1px solid #B3B3B3;
+}
+
+#add-photo-button {
+    display: block;
+    margin: 0 auto;
+    background-color: #1D6154;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 50px;
+    cursor: pointer;
+	margin-top: 30px;
+	font-size: 14px;
+	font-family: 'Syne';
+	font-weight:700;
+}
+
