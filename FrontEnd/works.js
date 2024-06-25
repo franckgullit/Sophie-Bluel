@@ -1,10 +1,11 @@
-
+async function begin() {
 //recuperation des donnees des travaux via l'API//
 const response = await fetch("http://localhost:5678/api/works");
-const data = await response.json();
+const data =  await response.json();
 displayGallery(data);
 console.log(data)
-
+}
+begin()
 function displayGallery(data) {
 
     let gallery = document.querySelector(".gallery");
@@ -73,6 +74,7 @@ function createfilterbutton(category) {
 
 //Gallery filtering//
 function filterGallery(category, data) {
+    console.log(category)
     if (category === "Tous") {
         displayGallery(data);
     } else {
