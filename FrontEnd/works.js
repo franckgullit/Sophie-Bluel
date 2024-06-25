@@ -70,6 +70,7 @@ function createfilterbutton(category) {
     //adding event listener//
     button.addEventListener("click", () => {
         filterGallery(category, data);
+        setactivecategory(button);//calling active category in event listener//
     });
 
     filters.appendChild(button);
@@ -88,10 +89,10 @@ function filterGallery(category, data) {
 
 //setting active category//
 function setactivecategory(activebutton) {
-    const filters = document.querySelectorAll("filters filter-button");
+    const filters = document.querySelectorAll(".filters .filter-button");
     filters.forEach(button => {
         button.classList.remove("active");
     });
-    activebutton.classlist.add("active");
+    activebutton.classList.add("active");
 }
 
