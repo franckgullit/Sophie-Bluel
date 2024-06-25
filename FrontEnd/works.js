@@ -1,11 +1,13 @@
+let data = undefined;
+
 async function begin() {
-//recuperation des donnees des travaux via l'API//
-const response = await fetch("http://localhost:5678/api/works");
-const data =  await response.json();
-displayGallery(data);
-console.log(data)
+    //recuperation des donnees des travaux via l'API//
+    let response = await fetch("http://localhost:5678/api/works");
+    data = await response.json();
+    displayGallery(data);
+    console.log(data)
 }
-begin()
+
 function displayGallery(data) {
 
     let gallery = document.querySelector(".gallery");
@@ -37,6 +39,7 @@ function displayGallery(data) {
         })
 }
 
+begin();
 //recuperation des differentes Categories via API//
 fetch("http://localhost:5678/api/categories")
     .then(response => response.json())
@@ -90,6 +93,5 @@ function setactivecategory(activebutton) {
         button.classList.remove("active");
     });
     activebutton.classlist.add("active");
-
 }
 
