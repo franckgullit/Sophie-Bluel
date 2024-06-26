@@ -3,11 +3,13 @@ let modal = null
 const openModal = function (e) {
     e.preventDefault()
     const target = document.querySelector(e.target.getAttribute("href"))
-// to nullify style = display:none; that i'll later set in htmml
+// to nullify style = display:none; in htmml//
     target.style.display = null
     target.removeAttribute("aria-hidden")
     target.setAttribute("aria-modal", "true")
     modal = target
+
+    //closing modal window//
     modal.addEventListener("click", closeModal)
     modal.querySelector(".close-button").addEventListener("click", closeModal)
 }
@@ -23,3 +25,7 @@ const closeModal = function(e) {
     modal = null
 }
 
+// Opening modal window when 'modifier'link is clicked//
+document.querySelectorAll("js-modal").forEach(a => {
+    a.addEventListener("click", openModal)
+})
