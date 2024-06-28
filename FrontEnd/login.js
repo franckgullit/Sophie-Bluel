@@ -1,37 +1,42 @@
 function addingsubmitlistener() {
     const loginform = document.querySelector("#login-form");
-    loginform.addEventListener("submit", function (event) {
+    loginform.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         // Creating object for login details//
         const logindata = {
-            email: event.target.querySelector("email-input").value,
-            password: event.target.querySelector("password-input").value,
-            errormessage: event.target.getElementbyId("error-message").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
         };
+        
+        //Getting error message//
+        const errorMessage = document.getElementById("error-message");
 
         //converting logindata to format json//
         const submittedform = JSON.stringify(logindata);
 
         //calling on fetch function//
         try {
-            fetch("http://localhost:5678/api/users/login", {
+            const response = await fetch("http://localhost:5678/api/users/login", {
                 method: "POST",
-                headers: { "content-type": "application/Json" },
-                body: "submittedform"
+                headers: { "Content-Type": "application/json" },
+                body: submittedform
             });
 
-            if (submittedform.match) {
-                const data = response.json()
-                    .then(data => localStorage.setItem);
+            if (response.ok) {
+                const data = await response.json();
+                const token = data.token;
+                localStorage.setItem("token", data.token);
                 location.href = "index.html";
             } else {
-                errorMessage.textContent = 'Email ou mot de passe incorrect';
-                errorMessage.style.display = 'block';
+                const errorData = await response.json();
+                errorMessage.textContent = "Email ou mot de passe incorrect";
+                errorMessage.style.display = "block";
             }
-         } catch (error) {
-                console.error('Erreur:', error);
-                errorMessage.style.display = 'block';
+        } catch (error) {
+            console.error('Erreur:', error);
+            errorMessage.textContent = "Une erreur est survenue. Veuillez réessayer plus tard.";
+            errorMessage.style.display = "block";
         }
     });
 }
