@@ -1,5 +1,5 @@
 function addingsubmitlistener() {
-    const loginform = document.querySelector("#login-form");
+    const loginform = document.getElementById("login-form");
     loginform.addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -40,3 +40,5 @@ function addingsubmitlistener() {
         }
     });
 }
+
+addingsubmitlistener();
