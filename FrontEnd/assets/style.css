@@ -411,7 +411,7 @@ header a {
 	font-weight: 300;
 }
 
-/* modal window*/
+/* editbutton section*/
 .portfolio-header {
 	display: flex;
 	flex-direction: row;
@@ -439,15 +439,15 @@ header a {
 	display: flex;
 	align-items: center;
 	width: 10px;
-	
 }
 
 .portfolio-header a {
 	text-decoration: none;
 }
 
+/* modal window*/
 .modal-pop-up-window {
-	position: fixed;
+	position:fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -455,6 +455,7 @@ header a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background: rgba(0, 0, 0, 0.3);
 }
 
 .close-button {
