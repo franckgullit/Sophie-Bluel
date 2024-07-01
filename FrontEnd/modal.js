@@ -2,20 +2,25 @@ let modal = null;
 
 const openModal = function (e) {
     e.preventDefault();
-    const target = document.querySelector(e.target.getAttribute("href"));
+    modal = document.querySelector(e.target.getAttribute("href"));
     
     // To nullify style = display:none; in HTML
-    target.style.display = null;
-    target.removeAttribute("aria-hidden");
-    target.setAttribute("aria-modal", "true");
-    modal = target;
+    modal.style.display = null;
+    modal.removeAttribute("aria-hidden");
+    modal.setAttribute("aria-modal", "true");
 
-    // Closing modal window
+    // Closing modal window//
     modal.addEventListener("click", closeModal);
     const closeButton = modal.querySelector(".close-button");
     if (closeButton) {
         closeButton.addEventListener("click", closeModal);
     }
+
+    //preventing closure of modal window upon click IN modal window//
+    modal.querySelector(".modal-content").addEventListener("click",function(e) {
+        e.stopPropagation();
+    });
+
 };
 
 const closeModal = function(e) {
@@ -39,3 +44,6 @@ const closeModal = function(e) {
 document.querySelectorAll(".js-modal").forEach(a => {
     a.addEventListener("click", openModal);
 });
+
+
+
