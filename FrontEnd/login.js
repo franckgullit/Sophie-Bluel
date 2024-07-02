@@ -8,7 +8,7 @@ function addingsubmitlistener() {
             email: document.getElementById("email").value,
             password: document.getElementById("password").value,
         };
-        
+
         //Getting error message//
         const errorMessage = document.getElementById("error-message");
 
@@ -26,7 +26,7 @@ function addingsubmitlistener() {
             if (response.ok) {
                 const data = await response.json();
                 const token = data.token;
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("authToken", data.token);
                 location.href = "index.html";
             } else {
                 const errorData = await response.json();
@@ -42,3 +42,5 @@ function addingsubmitlistener() {
 }
 
 addingsubmitlistener();
+
+
