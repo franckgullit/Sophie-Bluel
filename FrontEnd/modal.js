@@ -94,23 +94,23 @@ function displaymodalGallery(data) {
 //Creating deleteItem function//
 async function deleteItem(e) {
     const itemId = e.target.dataset.id;
-    const token = data.token;
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+        console.error("Token is not available.");
+        return;
+    }
 
     try {
         let response = await fetch("http://localhost:5678/api/works/" + itemId, {
             method: "DELETE",
             headers: {
-                Authorization: "Bearer " + data.token
+                Authorization: "Bearer " + token
             }
         });
 
-        if (!token) {
-            console.error("Token is not available.");
-            return;
-        }
-
         if (response.ok) {
-            // Remove the deleted item from the gallery//
+            // Removal of deleted item from the gallery//
             e.target.parentElement.remove();
         } else {
             console.error("Error deleting item:", response.statusText);
