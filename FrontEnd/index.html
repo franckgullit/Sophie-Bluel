@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="works.js"></script>
+	<script src="works.js" defer></script>
 	<script src="modal.js" defer></script>
 </head>
 
@@ -47,11 +47,11 @@
 		<section id="portfolio">
 			<div class="portfolio-header">
 				<h2>Mes Projets</h2>
-				<a href="#modal" class="js-modal">
-					<button id="edit-button" class="hidden-edit-button">
+				<div id="edit-mode-bar" class="hidden">
+					<button id="edit-button" class="hidden-edit-button" >
 						<i class="fa-regular fa-pen-to-square"></i> modifier
 					</button>
-				</a>
+				</div>
 			</div>
 
 			<!-- creating category filter buttons-->
@@ -94,47 +94,47 @@
 			<div class="modal-gallery">
 				<figure>
 					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash1"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash2"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash3"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash4"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash5"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash6"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash7"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash8"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash9"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash10"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-					<i class="fa-solid fa-trash-can"></i>
+					<i class="fa-solid fa-trash-can" id ="trash11"></i>
 				</figure>
 			</div>
 			<div class="separator"></div>
