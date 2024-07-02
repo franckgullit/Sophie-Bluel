@@ -43,6 +43,7 @@ const closeModal = function (e) {
 // Opening modal window when 'js-modal' link is clicked//
 document.getElementById("edit-button").addEventListener("click", (e) => openModal(e))
 
+
 // managing modal content//
 let modalData = undefined;
 
@@ -76,7 +77,7 @@ function displaymodalGallery(data) {
 
         // Creating trashicon
         const trashIconElement = document.createElement("i");
-        trashIconElement.classList.add("fa-solid", "fa-trash-can")
+        trashIconElement.classList.add("fa-solid", "fa-trash-can");
         // Storing item ID in data attribute//
         trashIconElement.dataset.id = item.id; 
 
@@ -105,7 +106,7 @@ async function deleteItem(e) {
         let response = await fetch("http://localhost:5678/api/works/" + itemId, {
             method: "DELETE",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: "Bearer " + authToken
             }
         });
 
