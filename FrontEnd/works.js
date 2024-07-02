@@ -1,84 +1,83 @@
 let data = undefined;
 
 async function begin() {
-    //recuperation des donnees des travaux via l'API//
-    let response = await fetch("http://localhost:5678/api/works");
-    data = await response.json();
-    displayGallery(data);
-    console.log(data)
+    try {
+        // Recupération des données des travaux via l'API
+        let response = await fetch("http://localhost:5678/api/works");
+        data = await response.json();
+        displayGallery(data);
+        console.log(data);
+    } catch (error) {
+        console.error("Error fetching works:", error);
+    }
 }
 
 function displayGallery(data) {
-
     let gallery = document.querySelector(".gallery");
 
-    // Emptying Gallery//
+    // Emptying Gallery
     gallery.innerHTML = "";
 
-    data.forEach(
+    data.forEach(item => {
+        let figureElement = document.createElement("figure");
 
-        item => {
-            let figureElement = document.createElement("figure");
+        // Creating image element
+        const imgElement = document.createElement("img");
+        imgElement.src = item.imageUrl;
 
-            //creating image element//
-            const imgElement = document.createElement("img");
-            imgElement.src = item.imageUrl;
+        // Adding created image to figure element
+        figureElement.appendChild(imgElement);
 
-            //adding created image to figure element//
-            figureElement.appendChild(imgElement);
+        // Creating caption
+        const figcaptionElement = document.createElement("h3");
+        figcaptionElement.innerText = item.title;
 
-            //creating caption//
-            const figcaptionElement = document.createElement("h3");
-            figcaptionElement.innerText = item.title;
+        // Adding caption to figure
+        figureElement.appendChild(figcaptionElement);
 
-            //adding caption to figure//
-            figureElement.appendChild(figcaptionElement)
-
-            // adding created figures to gallery//
-            gallery.appendChild(figureElement)
-        })
+        // Adding created figures to gallery
+        gallery.appendChild(figureElement);
+    });
 }
 
 begin();
-//recuperation des differentes Categories via API//
+
 fetch("http://localhost:5678/api/categories")
     .then(response => response.json())
-    .then(categories => displaycategories(categories))
-function displaycategories(categories) {
-    console.log(categories)
+    .then(categories => displayCategories(categories))
+    .catch(error => console.error("Error fetching categories:", error));
 
-    let filter = document.getElementById("filters");
+function displayCategories(categories) {
+    console.log(categories);
 
-    //Tous button//
-    createfilterbutton("Tous")
+    let filters = document.getElementById("filters");
 
-    categories.forEach(
-        category =>
-            createfilterbutton(category.name)
-    );
+    // "Tous" button
+    createFilterButton("Tous");
+
+    categories.forEach(category => createFilterButton(category.name));
 }
 
-//filter buttons//
-function createfilterbutton(category) {
+function createFilterButton(category) {
     const button = document.createElement("button");
-    const textbutton = document.createElement("span");
-    textbutton.textContent = category;
-    button.classList.add("filter-button")
-    textbutton.classList.add("filter-button-txt")
-    button.appendChild(textbutton)
+    const textButton = document.createElement("span");
+    textButton.textContent = category;
+    button.classList.add("filter-button");
+    textButton.classList.add("filter-button-txt");
+    button.appendChild(textButton);
 
-    //adding event listener//
+    // Adding event listener
     button.addEventListener("click", () => {
         filterGallery(category, data);
-        setactivecategory(button);//calling active category in event listener//
+        setActiveCategory(button);
     });
 
+    let filters = document.getElementById("filters");
     filters.appendChild(button);
 }
 
-//Gallery filtering//
 function filterGallery(category, data) {
-    console.log(category)
+    console.log("Filtering by category:", category);
     if (category === "Tous") {
         displayGallery(data);
     } else {
@@ -87,12 +86,10 @@ function filterGallery(category, data) {
     }
 }
 
-//setting active category//
-function setactivecategory(activebutton) {
-    const filters = document.querySelectorAll(".filters .filter-button");
-    filters.forEach(button => {
+function setActiveCategory(activeButton) {
+    const filterButtons = document.querySelectorAll("#filters .filter-button");
+    filterButtons.forEach(button => {
         button.classList.remove("active");
     });
-    activebutton.classList.add("active");
+    activeButton.classList.add("active");
 }
-
