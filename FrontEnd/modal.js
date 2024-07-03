@@ -43,15 +43,13 @@ const closeModal = function (e) {
 // Opening modal window when 'js-modal' link is clicked//
 document.getElementById("edit-button").addEventListener("click", (e) => openModal(e))
 
-
-// managing modal content//
 let modalData = undefined;
-
+// managing modal content//
 async function begin() {
     try {
         // Recupération des données des travaux via l'API
         let response = await fetch("http://localhost:5678/api/works");
-        data = await response.json();
+        let data = await response.json();
         displaymodalGallery(data);
         console.log(data);
     } catch (error) {
@@ -79,7 +77,7 @@ function displaymodalGallery(data) {
         const trashIconElement = document.createElement("i");
         trashIconElement.classList.add("fa-solid", "fa-trash-can");
         // Storing item ID in data attribute//
-        trashIconElement.dataset.id = item.id; 
+        trashIconElement.dataset.id = item.id;
 
         // Adding trashicon to figure//
         modalfigureElement.appendChild(trashIconElement);
@@ -95,7 +93,7 @@ function displaymodalGallery(data) {
 //Creating deleteItem function//
 async function deleteItem(e) {
     const itemId = e.target.dataset.id;
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("authToken",data.token);
 
     if (!token) {
         console.error("Token is not available.");
@@ -106,7 +104,7 @@ async function deleteItem(e) {
         let response = await fetch("http://localhost:5678/api/works/" + itemId, {
             method: "DELETE",
             headers: {
-                Authorization: "Bearer " + authToken
+                Authorization: "Bearer " + token
             }
         });
 
