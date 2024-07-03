@@ -35,7 +35,8 @@
 			</figure>
 			<article>
 				<h2>Designer d'espace</h2>
-				<p>Je raconte votre histoire, je valorise vos idées. Je vous<br> accompagne de la conception à la livraison
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous<br> accompagne de la conception à la
+					livraison
 					finale du<br> chantier.</p>
 				<p>Chaque projet sera étudié en commun, de façon à mettre<br> en valeur les volumes, les matières et les
 					couleurs dans le<br> respect de l’esprit des lieux et le choix adapté des<br> matériaux. Le suivi du
@@ -48,7 +49,7 @@
 			<div class="portfolio-header">
 				<h2>Mes Projets</h2>
 				<div id="edit-mode-bar" class="hidden">
-					<button id="edit-button" class="hidden-edit-button" >
+					<button id="edit-button" class="hidden-edit-button">
 						<i class="fa-regular fa-pen-to-square"></i> modifier
 					</button>
 				</div>
@@ -86,61 +87,99 @@
 		</nav>
 	</footer>
 
-	<!--modal window-->
-	<aside id="modal" class="modal-pop-up-window" aria-hidden="true" role="dialog" aria-modal="false" style = "display:none;">
+	<!--first modal window-->
+	<aside id="modal" class="modal-pop-up-window" aria-hidden="true" role="dialog" aria-modal="false"
+		style="display:none;">
 		<div class="modal-content">
-			<button class="close-button">&times;</button>
+			<button class="close-button">
+				<i class="fa-solid fa-x"></i>
+			</button>
 			<h2 id="modal-title"> Galerie photo</h2>
 			<div class="modal-gallery">
 				<figure>
 					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<i class="fa-solid fa-trash-can" id ="trash1"></i>
+					<i class="fa-solid fa-trash-can" id="trash1"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-					<i class="fa-solid fa-trash-can" id ="trash2"></i>
+					<i class="fa-solid fa-trash-can" id="trash2"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-					<i class="fa-solid fa-trash-can" id ="trash3"></i>
+					<i class="fa-solid fa-trash-can" id="trash3"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-					<i class="fa-solid fa-trash-can" id ="trash4"></i>
+					<i class="fa-solid fa-trash-can" id="trash4"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-					<i class="fa-solid fa-trash-can" id ="trash5"></i>
+					<i class="fa-solid fa-trash-can" id="trash5"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-					<i class="fa-solid fa-trash-can" id ="trash6"></i>
+					<i class="fa-solid fa-trash-can" id="trash6"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-					<i class="fa-solid fa-trash-can" id ="trash7"></i>
+					<i class="fa-solid fa-trash-can" id="trash7"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-					<i class="fa-solid fa-trash-can" id ="trash8"></i>
+					<i class="fa-solid fa-trash-can" id="trash8"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-					<i class="fa-solid fa-trash-can" id ="trash9"></i>
+					<i class="fa-solid fa-trash-can" id="trash9"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-					<i class="fa-solid fa-trash-can" id ="trash10"></i>
+					<i class="fa-solid fa-trash-can" id="trash10"></i>
 				</figure>
 				<figure>
 					<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-					<i class="fa-solid fa-trash-can" id ="trash11"></i>
+					<i class="fa-solid fa-trash-can" id="trash11"></i>
 				</figure>
 			</div>
 			<div class="separator"></div>
 			<button id="add-photo-button">Ajouter une photo</button>
 		</div>
 	</aside>
+
+	<!-- second modale window -->
+	<aside id="modal2" class="modal-pop-up-window" aria-hidden="true" role="dialog" aria-modal="false">
+		<div id="upload-modal" class=" modal-content">
+			<div class="upload-modal-buttons">
+				<button class="back-button">
+					<i class="fa-solid fa-arrow-left"></i>
+				</button>
+				<button class="close-button">
+					<i class="fa-solid fa-x"></i>
+				</button>
+			</div>
+			<h2 id="modal-title"> Ajout photo</h2>
+			<div class="add-photo-form">
+				<div class="photo-upload-container">
+					<i class="fa-regular fa-image"></i>
+					<button id="upload-photo-button">
+						<span class="upload-photo-button-txt">+ Ajouter photo</span>
+					</button>
+					<p>jpg. png : 4mo max</p>
+				</div>
+			</div>
+			<div class="photo-info">
+				<label for="photo-title">Titre</label>
+				<input type="text" id="photo-title">
+				<label for="photo-category">Catégorie</label>
+				<input type="text" id="photo-category">
+			</div>
+			<div class="separator"></div>
+			<button id="submit-photo-button">
+				<span class="submit-photo-button-txt">Valider</span>
+			</button>
+		</div>
+		</div>
+		</div>
 </body>
 
 </html>
