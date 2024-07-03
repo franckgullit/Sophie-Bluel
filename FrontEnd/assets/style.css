@@ -300,7 +300,7 @@ footer nav ul {
 	justify-content: center;
 	margin-bottom: 49px;
 	margin-top: 15px;
-	gap:10px;
+	gap: 10px;
 }
 
 .filter-button {
@@ -445,9 +445,9 @@ header a {
 	text-decoration: none;
 }
 
-/* modal window*/
+/* modal windows*/
 .modal-pop-up-window {
-	position:fixed;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -459,13 +459,14 @@ header a {
 }
 
 .close-button {
-	top: 10px;
-	right: 10px;
+	top: 25px;
+	right: 25px;
 	position: absolute;
 	cursor: pointer;
-	font-size: 24px;
+	font-size: 15px;
 	border: none;
 	background-color: #fff;
+	font-weight: 400;
 }
 
 .modal-pop-up-window h2 {
@@ -496,8 +497,8 @@ header a {
 	overflow: auto;
 	padding: 40px;
 	justify-content: center;
-	margin-top:-10px;
-	margin-bottom:40px;
+	margin-top: -10px;
+	margin-bottom: 40px;
 }
 
 .modal-gallery img {
@@ -530,9 +531,11 @@ header a {
 
 .separator {
 	border: 1px solid #B3B3B3;
-	width: 72%;
-	margin: 0 90px;
+	width: 420px;
 	display: inline-block;
+	margin-left: 100px;
+	margin-bottom: 15px;
+	margin-top: 15px;
 }
 
 #add-photo-button {
@@ -544,7 +547,116 @@ header a {
 	padding: 10px 50px;
 	border-radius: 50px;
 	cursor: pointer;
-	margin-top: 30px;
+	margin-top: 20px;
+	font-size: 14px;
+	font-family: 'Syne';
+	font-weight: 700;
+}
+
+/* modal2 */
+.back-button {
+	top: 25px;
+	left: 25px;
+	position: absolute;
+	cursor: pointer;
+	font-size: 21px;
+	border: none;
+	background-color: #fff;
+	font-weight: 400;
+}
+
+#upload-modal .upload-modal-buttons {
+	margin-bottom: 60px;
+}
+
+#modal2 h2 {
+	margin-bottom: 35px;
+}
+
+.photo-upload-container {
+	width: 420px;
+	height: 169px;
+	background: #E8F1F6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin: 20px auto;
+}
+
+#upload-photo-button {
+	display: block;
+	margin: 0 auto;
+	background-color: #CBD6DC;
+	color: #306685;
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	margin-bottom: 5px;
+	width: 173px;
+	padding: 10px 20px;
+}
+
+.upload-photo-button-txt {
+	font-size: 14px;
+	font-family: 'work sans';
+	font-weight: 500;
+}
+
+.add-photo-form .fa-image {
+	font-size: 65px;
+	color: #B9C5CC;
+	margin-top: 15px;
+}
+
+.add-photo-form p {
+	font-family: 'Work Sans';
+	font-size: 10px;
+	font-weight: 400;
+	color: #444444;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.photo-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 30px;
+	margin-top: -15px;
+}
+
+.photo-info input[type="text"] {
+	width: 64%;
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 0 10px;
+}
+
+.photo-info label {
+	margin: 2em 0 0.5em 1em;
+	display: flex;
+	width: 70%;
+	font-weight: 500;
+}
+
+#submit-photo-button {
+	display: block;
+	margin: 0 auto;
+	background-color: #A7A7A7;
+	border: none;
+	padding: 10px 50px;
+	border-radius: 50px;
+	cursor: pointer;
+	width: 237px;
+	margin-top: 15px;
+}
+
+.submit-photo-button-txt {
+	color: #FFFFFF;
 	font-size: 14px;
 	font-family: 'Syne';
 	font-weight: 700;
