@@ -22,7 +22,7 @@ const openModal = function (e) {
     });
 
 };
-
+//close modal function//
 const closeModal = function (e) {
     if (modal === null) return;
     e.preventDefault();
@@ -93,7 +93,7 @@ function displaymodalGallery(data) {
 //Creating deleteItem function//
 async function deleteItem(e) {
     const itemId = e.target.dataset.id;
-    const token = localStorage.getItem("authToken",data.token);
+    const token = localStorage.getItem("authToken", data.token);
 
     if (!token) {
         console.error("Token is not available.");
@@ -120,3 +120,66 @@ async function deleteItem(e) {
 }
 
 begin();
+
+let modal2 = null;
+//Accessing second modal for edit uploads//
+const openModal2 = function (e) {
+    e.preventDefault();
+    modal2 = document.getElementById("modal2");
+
+    // To nullify style = display:none; in HTML in modal2//
+    modal2.style.display = null
+    modal2.removeAttribute("aria-hidden");
+    modal2.setAttribute("aria-modal", "true");
+
+    // Closing modal2 window//
+    modal2.addEventListener("click", closeModal2);
+    const closeButton = modal2.querySelector(".close-button");
+    if (closeButton) {
+        closeButton.addEventListener("click", closeModal2);
+    }
+
+    //adding event listener to back button in modal2//
+    modal2.addEventlistener("click", goBack);
+    const backButton = modal2.querySelector(".back-button");
+    if (backButton) {
+        backButton.addEventListener("click", goBack)
+    }
+
+    //preventing closure of modal2 window upon click IN modal2 window//
+    modal2.querySelector(".modal-content").addEventListener("click", function (e) {
+        e.stopPropagation();
+    });
+};
+
+// Opening modal2 window when 'ajouter une photo' is clicked//
+document.getElementById("add-photo-button").addEventListener("click", (e) => openModal2(e))
+
+//creating modal2 close function//
+const closeModal2 = function (e) {
+    if (modal2 === null) return;
+    e.preventDefault();
+
+    modal2.style.display = "none";
+    modal2.setAttribute("aria-hidden", "true");
+    modal2.removeAttribute("aria-modal");
+    modal2.removeEventListener("click", closeModal2);
+
+    const closeButton = modal2.querySelector(".close-button");
+    if (closeButton) {
+        closeButton.removeEventListener("click", closeModal2);
+    }
+    modal2 = null;
+};
+
+//creating goBAck function//
+const goBack = function (e) {
+    if (modal2 === null) return;
+    e.preventDefault();
+
+    const backButton = modal.querySelector(".back-button");
+    if (backButton) {
+        backButton.removeEventListener("click", closeModal2);
+    }
+
+}
