@@ -147,7 +147,8 @@
 	</aside>
 
 	<!-- second modale window -->
-	<aside id="modal2" class="modal-pop-up-window" aria-hidden="true" role="dialog" aria-modal="false" style = "display:none;">
+	<aside id="modal2" class="modal-pop-up-window" aria-hidden="true" role="dialog" aria-modal="false"
+		style="display:none;">
 		<div id="upload-modal" class=" modal-content">
 			<div class="upload-modal-buttons">
 				<button class="back-button">
@@ -158,23 +159,25 @@
 				</button>
 			</div>
 			<h2 id="modal-title"> Ajout photo</h2>
-			<div class="add-photo-form">
-				<div class="photo-upload-container">
-					<i class="fa-regular fa-image"></i>
-					<button id="upload-photo-button">
-						<span class="upload-photo-button-txt">+ Ajouter photo</span>
-					</button>
-					<p>jpg. png : 4mo max</p>
+			<div id=" upload-form">
+				<div class="add-photo-form">
+					<div class="photo-upload-container">
+						<i class="fa-regular fa-image"></i>
+						<button id="upload-photo-button">
+							<span class="upload-photo-button-txt">+ Ajouter photo</span>
+						</button>
+						<p>jpg. png : 4mo max</p>
+					</div>
+				</div>
+				<div class="photo-info">
+					<label for="photo-title">Titre</label>
+					<input type="text" id="photo-title">
+					<label for="photo-category">Catégorie</label>
+					<input type="text" id="photo-category">
 				</div>
 			</div>
-			<div class="photo-info">
-				<label for="photo-title">Titre</label>
-				<input type="text" id="photo-title">
-				<label for="photo-category">Catégorie</label>
-				<input type="text" id="photo-category">
-			</div>
 			<div class="separator"></div>
-			<button id="submit-photo-button">
+			<button id="submit-photo-button" type = "submit">
 				<span class="submit-photo-button-txt">Valider</span>
 			</button>
 		</div>
