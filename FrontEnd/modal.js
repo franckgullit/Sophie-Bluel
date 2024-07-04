@@ -43,11 +43,10 @@ const closeModal = function (e) {
 // Opening modal window when 'js-modal' link is clicked//
 document.getElementById("edit-button").addEventListener("click", (e) => openModal(e))
 
-let modalData = undefined;
 // managing modal content//
 async function begin() {
     try {
-        // Recupération des données des travaux via l'API
+        // Recupération des données des travaux via l'API//
         let response = await fetch("http://localhost:5678/api/works");
         let data = await response.json();
         displaymodalGallery(data);
@@ -118,11 +117,11 @@ async function deleteItem(e) {
         console.error("Error deleting item:", error);
     }
 }
-
 begin();
 
-let modal2 = null;
 //Accessing second modal for edit uploads//
+let modal2 = null;
+
 const openModal2 = function (e) {
     e.preventDefault();
     modal2 = document.getElementById("modal2");
@@ -138,9 +137,7 @@ const openModal2 = function (e) {
     if (closeButton) {
         closeButton.addEventListener("click", closeModal2);
     }
-
     //adding event listener to back button in modal2//
-    modal2.addEventlistener("click", goBack);
     const backButton = modal2.querySelector(".back-button");
     if (backButton) {
         backButton.addEventListener("click", goBack)
@@ -153,7 +150,7 @@ const openModal2 = function (e) {
 };
 
 // Opening modal2 window when 'ajouter une photo' is clicked//
-document.getElementById("add-photo-button").addEventListener("click", (e) => openModal2(e))
+document.getElementById("add-photo-button").addEventListener("click", (e) => openModal2(e));
 
 //creating modal2 close function//
 const closeModal2 = function (e) {
@@ -177,9 +174,53 @@ const goBack = function (e) {
     if (modal2 === null) return;
     e.preventDefault();
 
-    const backButton = modal.querySelector(".back-button");
+    const backButton = modal2.querySelector(".back-button");
     if (backButton) {
         backButton.removeEventListener("click", closeModal2);
     }
-
+    closeModal2(e);
 }
+
+//Managing Modal2 upload info//
+function addinguploadlistener() {
+    const uploadform = document.getElementById("upload-form");
+    uploadform.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        // Creating object for upload//
+        const uploadinfo = {
+            uploadphotobutton: document.getElementById("upload-photo-button"),
+            phototitle: document.getElementById("photo-title").value,
+            photocategory: document.getElementById("photo-category").value,
+        };
+
+        // adding eventlistener to submit photo button//
+        document.getElementById("submit-photo-button").addEventListener("click", (e) => addinguploadlistener(e));
+
+        //converting upload info to format json//
+        const uploadedform = JSON.stringify(uploadinfo);
+
+        //calling on fetch function//
+        try {
+            const response = await fetch("http://localhost:5678/api/works", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: uploadedform
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                location.href = "index.html";
+            } else {
+                const errorData = await response.json();
+                errorMessage.style.display = "block";
+            }
+        } catch (error) {
+            console.error('Erreur:', error);
+            errorMessage.textContent = "Une erreur est survenue. Veuillez réessayer plus tard.";
+            errorMessage.style.display = "block";
+        }
+    });
+}
+
+addinguploadlistener();
