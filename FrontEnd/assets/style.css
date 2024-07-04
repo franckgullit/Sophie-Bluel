@@ -643,7 +643,7 @@ header a {
 	font-weight: 500;
 }
 
-#submit-photo-button {
+#modal2 input[type="submit"]{
 	display: block;
 	margin: 0 auto;
 	background-color: #A7A7A7;
@@ -655,9 +655,3 @@ header a {
 	margin-top: 15px;
 }
 
-.submit-photo-button-txt {
-	color: #FFFFFF;
-	font-size: 14px;
-	font-family: 'Syne';
-	font-weight: 700;
-}
