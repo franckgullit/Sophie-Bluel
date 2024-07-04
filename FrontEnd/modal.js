@@ -167,7 +167,7 @@ const closeModal2 = function (e) {
         closeButton.removeEventListener("click", closeModal2);
     }
     modal2 = null;
-};
+}
 
 //creating goBAck function//
 const goBack = function (e) {
@@ -189,13 +189,10 @@ function addinguploadlistener() {
 
         // Creating object for upload//
         const uploadinfo = {
-            uploadphotobutton: document.getElementById("upload-photo-button"),
+            uploadphotobutton: document.getElementById("upload-photo-button").imageUrl,
             phototitle: document.getElementById("photo-title").value,
             photocategory: document.getElementById("photo-category").value,
         };
-
-        // adding eventlistener to submit photo button//
-        document.getElementById("submit-photo-button").addEventListener("click", (e) => addinguploadlistener(e));
 
         //converting upload info to format json//
         const uploadedform = JSON.stringify(uploadinfo);
