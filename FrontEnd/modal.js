@@ -137,6 +137,7 @@ const openModal2 = function (e) {
     if (closeButton) {
         closeButton.addEventListener("click", closeModal2);
     }
+
     //adding event listener to back button in modal2//
     const backButton = modal2.querySelector(".back-button");
     if (backButton) {
@@ -189,10 +190,22 @@ function addinguploadlistener() {
 
         // Creating object for upload//
         const uploadinfo = {
-            uploadphotobutton: document.getElementById("upload-photo-button").imageUrl,
+            uploadphotobutton: document.getElementById("upload-photo-button"),
             phototitle: document.getElementById("photo-title").value,
             photocategory: document.getElementById("photo-category").value,
         };
+
+        const fileinput = document.getElementById("file-input")
+
+        //linking uploadphoto button with hidden file input button by adding event listener//
+        uploadphotobutton.addEventListener("click", function (e) {
+            fileinput.click();
+        });
+
+        if (!phototitle || !photocategory || !fileinput) {
+            alert("Veuillez remplir tous les champs et sélectionner une photo.");
+            return;
+        }
 
         //converting upload info to format json//
         const uploadedform = JSON.stringify(uploadinfo);
