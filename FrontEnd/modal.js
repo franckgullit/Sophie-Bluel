@@ -202,6 +202,7 @@ function addinguploadlistener() {
             fileinput.click();
         });
 
+        //ensuring all fields are filled//
         if (!phototitle || !photocategory || !fileinput) {
             alert("Veuillez remplir tous les champs et sélectionner une photo.");
             return;
