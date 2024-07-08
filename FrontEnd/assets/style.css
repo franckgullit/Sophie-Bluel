@@ -643,7 +643,7 @@ header a {
 	font-weight: 500;
 }
 
-#modal2 input[type="submit"]{
+#modal2 input[type="submit"] {
 	display: block;
 	margin: 0 auto;
 	background-color: #A7A7A7;
@@ -655,3 +655,19 @@ header a {
 	margin-top: 15px;
 }
 
+#edition-mode {
+	background-color: black;
+	height: 59px;
+	margin-left: -189px;
+	margin-right: -189px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.edition-mode-txt {
+	color: white;
+	font-family: Work Sans;
+	font-size: 16px;
+	font-weight: 400;
+}
