@@ -25,7 +25,7 @@ function addingsubmitlistener() {
 
             if (response.ok) {
                 const data = await response.json();
-                const token = authToken;
+                const token = data.token;
                 localStorage.setItem("authToken", data.token);
                 location.href = "index.html";
             } else {
