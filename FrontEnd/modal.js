@@ -1,98 +1,110 @@
 let modal = null;
+let modal2 = null;
 
+// Function to open modal
 const openModal = function (e) {
     e.preventDefault();
     modal = document.getElementById("modal");
-
-    // To nullify style = display:none; in HTML//
-    modal.style.display = null
+    modal.style.display = null;  // To nullify style = display:none; in HTML//
     modal.removeAttribute("aria-hidden");
     modal.setAttribute("aria-modal", "true");
-
     // Closing modal window//
     modal.addEventListener("click", closeModal);
-    const closeButton = modal.querySelector(".close-button");
+    const closeButton = document.getElementById("close-button");
     if (closeButton) {
         closeButton.addEventListener("click", closeModal);
     }
-
     //preventing closure of modal window upon click IN modal window//
-    modal.querySelector(".modal-content").addEventListener("click", function (e) {
-        e.stopPropagation();
-    });
-
+    modal.querySelector(".modal-content").addEventListener("click", (e) => e.stopPropagation());
 };
-//close modal function//
+
+// Function to close modal
 const closeModal = function (e) {
     if (modal === null) return;
     e.preventDefault();
-
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
     modal.removeAttribute("aria-modal");
     modal.removeEventListener("click", closeModal);
-
-    const closeButton = modal.querySelector(".close-button");
+    const closeButton = document.getElementById("close-button");
     if (closeButton) {
         closeButton.removeEventListener("click", closeModal);
     }
-
     modal = null;
 };
 
-// Opening modal window when 'js-modal' link is clicked//
-document.getElementById("edit-button").addEventListener("click", (e) => openModal(e))
-
-// managing modal content//
-async function begin() {
-    try {
-        // Recupération des données des travaux via l'API//
-        let response = await fetch("http://localhost:5678/api/works");
-        let data = await response.json();
-        displaymodalGallery(data);
-        console.log(data);
-    } catch (error) {
-        console.error("Error fetching works:", error);
+// Function to open second modal
+const openModal2 = function (e) {
+    e.preventDefault();
+    modal2 = document.getElementById("modal2");
+    modal2.style.display = null; // To nullify style = display:none; in HTML in modal2//
+    modal2.removeAttribute("aria-hidden");
+    modal2.setAttribute("aria-modal", "true");
+    // Closing second modal window//
+    modal2.addEventListener("click", closeModal2);
+    const closeButton2 = document.getElementById("close-button2");
+    if (closeButton2) {
+        closeButton2.addEventListener("click", closeModal2);
     }
-}
+    //adding event listener to back button in modal2//
+    const backButton = document.getElementById("back-button");
+    if (backButton) {
+        backButton.addEventListener("click", goBack);
+    }
+    //preventing closure of modal window upon click IN modal window//
+    modal2.querySelector(".modal-content").addEventListener("click", (e) => e.stopPropagation());
+};
 
-function displaymodalGallery(data) {
+// Function to close second modal
+const closeModal2 = function (e) {
+    if (modal2 === null) return;
+    e.preventDefault();
+    modal2.style.display = "none";
+    modal2.setAttribute("aria-hidden", "true");
+    modal2.removeAttribute("aria-modal");
+    modal2.removeEventListener("click", closeModal2);
+    const closeButton2 = document.getElementById("close-button2");
+    if (closeButton2) {
+        closeButton2.removeEventListener("click", closeModal2);
+    }
+    modal2 = null;
+};
+
+// Function to go back from second modal
+const goBack = function (e) {
+    e.preventDefault();
+    closeModal2(e);
+};
+
+// Function to display modal gallery
+function displayModalGallery(data) {
     let modalGallery = document.querySelector(".modal-gallery");
-
-    // Emptying modal Gallery//
-    modalGallery.innerHTML = "";
-
+    modalGallery.innerHTML = ""; // Emptying modal Gallery//
     data.forEach(item => {
-        let modalfigureElement = document.createElement("figure");
-
+        let modalFigureElement = document.createElement("figure");
         // Creating image element//
-        const imgmodalElement = document.createElement("img");
-        imgmodalElement.src = item.imageUrl;
-
+        const imgModalElement = document.createElement("img");
+        imgModalElement.src = item.imageUrl;
         // Adding created image to figure element//
-        modalfigureElement.appendChild(imgmodalElement);
-
+        modalFigureElement.appendChild(imgModalElement);
         // Creating trashicon
         const trashIconElement = document.createElement("i");
         trashIconElement.classList.add("fa-solid", "fa-trash-can");
         // Storing item ID in data attribute//
         trashIconElement.dataset.id = item.id;
-
         // Adding trashicon to figure//
-        modalfigureElement.appendChild(trashIconElement);
-
+        modalFigureElement.appendChild(trashIconElement);
         // Adding created figures to modalgallery//
-        modalGallery.appendChild(modalfigureElement);
-
+        modalGallery.appendChild(modalFigureElement);
         // Adding event listener to the trash icon//
         trashIconElement.addEventListener("click", (e) => deleteItem(e));
     });
 }
 
-//Creating deleteItem function//
+// Function to delete an item
 async function deleteItem(e) {
     const itemId = e.target.dataset.id;
-    const token = localStorage.getItem("authToken", data.token);
+    const token = localStorage.getItem("authToken");
 
     if (!token) {
         console.error("Token is not available.");
@@ -100,16 +112,15 @@ async function deleteItem(e) {
     }
 
     try {
-        let response = await fetch("http://localhost:5678/api/works/" + itemId, {
+        let response = await fetch(`http://localhost:5678/api/works/${itemId}`, {
             method: "DELETE",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         });
 
         if (response.ok) {
-            // Removal of deleted item from the gallery//
-            e.target.parentElement.remove();
+            e.target.parentElement.remove(); // Removal of deleted item from the gallery//
         } else {
             console.error("Error deleting item:", response.statusText);
         }
@@ -117,121 +128,70 @@ async function deleteItem(e) {
         console.error("Error deleting item:", error);
     }
 }
+
+// Function to fetch and display works via API
+async function begin() {
+    try {
+        let response = await fetch("http://localhost:5678/api/works");
+        let data = await response.json();
+        displayModalGallery(data);
+    } catch (error) {
+        console.error("Error fetching works:", error);
+    }
+}
 begin();
 
-//Accessing second modal for edit uploads//
-let modal2 = null;
+// Function to add upload event listener
+function addingUploadListener() {
+    const uploadForm = document.getElementById("upload-form");
+    if (!uploadForm) return;
 
-const openModal2 = function (e) {
-    e.preventDefault();
-    modal2 = document.getElementById("modal2");
+    const uploadPhotoButton = document.getElementById("upload-photo-button");
+    const fileInput = document.getElementById("file-input");
 
-    // To nullify style = display:none; in HTML in modal2//
-    modal2.style.display = null
-    modal2.removeAttribute("aria-hidden");
-    modal2.setAttribute("aria-modal", "true");
+    //linking uploadphoto button with hidden file input button by adding event listener//
+    uploadPhotoButton.addEventListener("click", (e) => fileInput.click());
 
-    // Closing modal2 window//
-    modal2.addEventListener("click", closeModal2);
-    const closeButton = modal2.querySelector(".close-button");
-    if (closeButton) {
-        closeButton.addEventListener("click", closeModal2);
-    }
-
-    //adding event listener to back button in modal2//
-    const backButton = modal2.querySelector(".back-button");
-    if (backButton) {
-        backButton.addEventListener("click", goBack)
-    }
-
-    //preventing closure of modal2 window upon click IN modal2 window//
-    modal2.querySelector(".modal-content").addEventListener("click", function (e) {
-        e.stopPropagation();
-    });
-};
-
-// Opening modal2 window when 'ajouter une photo' is clicked//
-document.getElementById("add-photo-button").addEventListener("click", (e) => openModal2(e));
-
-//creating modal2 close function//
-const closeModal2 = function (e) {
-    if (modal2 === null) return;
-    e.preventDefault();
-
-    modal2.style.display = "none";
-    modal2.setAttribute("aria-hidden", "true");
-    modal2.removeAttribute("aria-modal");
-    modal2.removeEventListener("click", closeModal2);
-
-    const closeButton = modal2.querySelector(".close-button");
-    if (closeButton) {
-        closeButton.removeEventListener("click", closeModal2);
-    }
-    modal2 = null;
-}
-
-//creating goBAck function//
-const goBack = function (e) {
-    if (modal2 === null) return;
-    e.preventDefault();
-
-    const backButton = modal2.querySelector(".back-button");
-    if (backButton) {
-        backButton.removeEventListener("click", closeModal2);
-    }
-    closeModal2(e);
-}
-
-//Managing Modal2 upload info//
-function addinguploadlistener() {
-    const uploadform = document.getElementById("upload-form");
-    uploadform.addEventListener("submit", async function (event) {
+    uploadForm.addEventListener("submit", async function (event) {
         event.preventDefault();
+        const photoTitle = document.getElementById("photo-title").value;
+        const photoCategory = document.getElementById("photo-category").value;
+        const file = fileInput.files[0];
 
-        // Creating object for upload//
-        const uploadinfo = {
-            uploadphotobutton: document.getElementById("upload-photo-button"),
-            phototitle: document.getElementById("photo-title").value,
-            photocategory: document.getElementById("photo-category").value,
-        };
-
-        const fileinput = document.getElementById("file-input")
-
-        //linking uploadphoto button with hidden file input button by adding event listener//
-        uploadphotobutton.addEventListener("click", function (e) {
-            fileinput.click();
-        });
-
-        //ensuring all fields are filled//
-        if (!phototitle || !photocategory || !fileinput) {
+        if (!photoTitle || !photoCategory || !file) { //ensuring all fields are filled//
             alert("Veuillez remplir tous les champs et sélectionner une photo.");
             return;
         }
 
-        //converting upload info to format json//
-        const uploadedform = JSON.stringify(uploadinfo);
+        const formData = new FormData();
+        formData.append("title", photoTitle);
+        formData.append("category", photoCategory);
+        formData.append("image", file);
 
         //calling on fetch function//
         try {
             const response = await fetch("http://localhost:5678/api/works", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: uploadedform
+                headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+                body: formData
             });
 
             if (response.ok) {
-                const data = await response.json();
                 location.href = "index.html";
             } else {
                 const errorData = await response.json();
-                errorMessage.style.display = "block";
+                console.error("Error uploading photo:", errorData);
             }
         } catch (error) {
             console.error('Erreur:', error);
-            errorMessage.textContent = "Une erreur est survenue. Veuillez réessayer plus tard.";
-            errorMessage.style.display = "block";
         }
     });
 }
+addingUploadListener();
 
-addinguploadlistener();
+// Event listeners to open modals
+// Opening modal window when 'modifier' is clicked//
+document.getElementById("edit-button").addEventListener("click", openModal);
+// Opening modal2 window when 'ajouter une photo' is clicked//
+document.getElementById("add-photo-button").addEventListener("click", openModal2);
+
