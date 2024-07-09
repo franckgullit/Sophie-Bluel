@@ -458,7 +458,7 @@ header a {
 	background: rgba(0, 0, 0, 0.3);
 }
 
-.close-button {
+#close-button, #close-button2{
 	top: 25px;
 	right: 25px;
 	position: absolute;
@@ -554,7 +554,7 @@ header a {
 }
 
 /* modal2 */
-.back-button {
+#back-button {
 	top: 25px;
 	left: 25px;
 	position: absolute;
