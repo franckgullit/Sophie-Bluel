@@ -38,6 +38,7 @@ const openModal2 = function (e) {
     e.preventDefault();
     modal2 = document.getElementById("modal2");
     modal2.style.display = null; // To nullify style = display:none; in HTML in modal2//
+    modal.style.display = "none";
     modal2.removeAttribute("aria-hidden");
     modal2.setAttribute("aria-modal", "true");
     // Closing second modal window//
@@ -72,7 +73,13 @@ const closeModal2 = function (e) {
 
 // Function to go back from second modal
 const goBack = function (e) {
+    if (modal2 === null) return;
     e.preventDefault();
+    const backButton = document.getElementById("back-button");
+    modal.style.display = null;
+    if (backButton) {
+        backButton.removeEventListener("click", closeModal2);
+    }
     closeModal2(e);
 };
 
