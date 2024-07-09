@@ -28,6 +28,7 @@ function addingsubmitlistener() {
                 const token = data.token;
                 localStorage.setItem("authToken", data.token);
                 location.href = "index.html";
+                
             } else {
                 const errorData = await response.json();
                 errorMessage.textContent = "Email ou mot de passe incorrect";
