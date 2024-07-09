@@ -1,30 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const editionMode = document.getElementById("edition-mode");
-    const editButton = document.getElementById("edit-mode-bar");
+    const authToken = localStorage.getItem("authToken");
+    const editModeBar = document.getElementById("edit-mode-bar");
+    const editButton = document.getElementById("edit-button");
+    const loginLogoutButton = document.getElementById("loginlogout-link");
     const filters = document.getElementById("filters");
-    const logOutLink = document.createElement("li");
-    const linkText = document.createElement("a");
-    linkText.innerText = "Logout";
-    logOutLink.appendChild(linkText);
+    const editionMode = document.getElementById("edition-mode")
 
-    const loginform = document.getElementById("login-form");
-    if (loginform) {
-        loginform.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const logindata = {
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value,
-            };
-
-            if (logindata.ok) {
-                window.location.href = "index.html";
-                editionMode.classList.remove("hidden");
-                editButton.classList.remove("hidden");
-                filters.style.display = "none";
-            } else {
-
-            }
-        });
-
+    // nullifying style=display:none; when an authentification token is present
+    if (authToken) {
+        editModeBar.style.display = null;
+        editButton.style.display = null;
+        filters.style.display = "none";
+        editionMode.style.display = null;
+        loginLogoutButton.textContent = "logout"
     }
+    //adding eventlistener to logout
+    loginLogoutButton.addEventListener('click', function () {
+        if (authToken) {
+            localStorage.removeItem("authToken");
+            location.reload();
+        }
+    });
 });
