@@ -15,10 +15,11 @@
 	<script src="works.js" defer></script>
 	<script src="modal.js" defer></script>
 	<script src="index.js" defer></script>
+
 </head>
 
 <body>
-	<div id="edition-mode" class="hidden" aria-hidden= "true" aria-bar="false" style="display: none;">
+	<div id="edition-mode" class="hidden" aria-hidden="true" aria-bar="false" style="display: none;">
 		<span class="edition-mode-txt">
 			<i class="fa-regular fa-pen-to-square"></i>
 			Mode édition
@@ -30,7 +31,7 @@
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li><a href="login.html" id ="loginlogout-link">login</a></li>
+				<li><a href="login.html" id="loginlogout-link">login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -63,7 +64,7 @@
 			</div>
 
 			<!-- creating category filter buttons-->
-			<div id="filters" >
+			<div id="filters">
 				<!--dynamique by js-->
 			</div>
 
@@ -166,14 +167,14 @@
 				</button>
 			</div>
 			<h2 id="modal-title"> Ajout photo</h2>
-			<div id=" upload-form">
+			<form id="upload-form">
 				<div class="add-photo-form">
 					<div class="photo-upload-container">
 						<i class="fa-regular fa-image"></i>
 						<button id="upload-photo-button">
 							<span class="upload-photo-button-txt">+ Ajouter photo</span>
 						</button>
-						<input type="file" id="file-input" hidden="hidden">
+						<input type="file" id="file-input" style="display:none;">
 						<p>jpg. png : 4mo max</p>
 					</div>
 				</div>
@@ -183,9 +184,9 @@
 					<label for="photo-category">Catégorie</label>
 					<input type="text" id="photo-category">
 				</div>
-			</div>
+			</form>
 			<div class="separator"></div>
-			<input type="submit" value="Valider">
+			<input id="submit-photo-button" type="submit" value="Valider">
 		</div>
 		</div>
 		</div>
