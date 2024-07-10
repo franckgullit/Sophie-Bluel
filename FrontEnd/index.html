@@ -177,12 +177,20 @@
 						<input type="file" id="file-input" style="display:none;">
 						<p>jpg. png : 4mo max</p>
 					</div>
+					<div class="upload-placeholder" id="image-preview">
+						<img src="" alt="photo Preview" class="photo-preview">
+					</div>
 				</div>
 				<div class="photo-info">
 					<label for="photo-title">Titre</label>
 					<input type="text" id="photo-title">
 					<label for="photo-category">Catégorie</label>
-					<input type="text" id="photo-category">
+					<select type="text" id="photo-category">
+						<option value=""></option>
+						<option value=1>Objets</option>
+						<option value=2>Appartements</option>
+						<option value=3>Hôtels & Restaurants</option>
+					  </select>
 				</div>
 			</form>
 			<div class="separator"></div>
