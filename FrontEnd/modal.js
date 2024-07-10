@@ -158,7 +158,10 @@ function addingUploadListener() {
     const submitphotobutton = document.getElementById("submit-photo-button");
 
     //linking uploadphoto button with hidden file input button by adding event listener//
-    uploadPhotoButton.addEventListener("click", (e) => fileInput.click());
+    uploadPhotoButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        fileInput.click();
+    });
 
     submitphotobutton.addEventListener("click", async function (event) {
         event.preventDefault();
