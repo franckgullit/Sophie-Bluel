@@ -156,11 +156,28 @@ function addingUploadListener() {
     const uploadPhotoButton = document.getElementById("upload-photo-button");
     const fileInput = document.getElementById("file-input");
     const submitphotobutton = document.getElementById("submit-photo-button");
+    const uploadphotocontainer = document.querySelector(".photo-upload-container");
+    const photoPreview = document.querySelector(".photo-preview");
 
     //linking uploadphoto button with hidden file input button by adding event listener//
     uploadPhotoButton.addEventListener("click", function (event) {
         event.preventDefault();
         fileInput.click();
+    });
+
+    fileInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+           photoPreview.style.display = "block";
+           uploadphotocontainer.style.display = "none";
+
+           reader.addEventListener("load", function(){
+                photoPreview.setAttribute("src", this.result);
+           });
+
+           reader.readAsDataURL(file);
+        };
     });
 
     submitphotobutton.addEventListener("click", async function (event) {
