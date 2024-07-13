@@ -109,6 +109,7 @@ section {
 
 body {
 	line-height: 1;
+	background-color:#FFFEF8;
 }
 
 ol,
@@ -294,30 +295,31 @@ footer nav ul {
 /* for filter buttons */
 
 #filters {
-	width: 70%;
-	margin: auto;
+	height:38px;
 	display: flex;
 	justify-content: center;
 	margin-bottom: 49px;
 	margin-top: 15px;
-	gap: 10px;
+	gap:9px;
 }
 
-.filter-button {
-	height: 37px;
+.filter-button{
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	padding: 4px 20px 4px 20px;
-}
-
-.filter-button-txt {
 	font-family: Syne;
 	font-size: 16px;
 	font-weight: 700;
-	line-height: 19.2px;
-	text-align: center;
-	color: #1D6154
+	color: #1D6154;
 }
+
+.filter-button:focus,
+.filter-button:hover{
+	background-color: #1D6154;
+	color: #fff;
+}
+
+
 
 /*for login page*/
 
@@ -392,24 +394,26 @@ header a {
 	color: black;
 	font-size: 1em;
 	cursor: pointer;
+	text-decoration: underline;
 }
 
 #login button:hover {
 	text-decoration: underline;
 }
 
-.login-page footer {
+footer {
 	height: 60px;
 	background-color: white;
 	display: flex;
 	justify-content: end;
-	margin: 2em;
+	margin-left: -189px;
+	margin-right:-189px;
 }
 
-.login-page footer li {
+ footer li {
 	font-size: 14px;
 	font-weight: 300;
-}
+ }
 
 /* editbutton section*/
 .portfolio-header {
@@ -428,7 +432,7 @@ header a {
 }
 
 .hidden-edit-button {
-	background-color: white;
+	background-color:#FFFEF8;
 	color: rgb(0, 0, 0);
 	border: none;
 	padding: 10px 20px;
@@ -673,7 +677,7 @@ header a {
 
 .photo-preview{
 	display: none;
-	width: 420px;
+	width: 129px;
 	height: 169px;
 	margin: 20px auto;
 }
