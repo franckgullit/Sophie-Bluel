@@ -169,14 +169,14 @@ function addingUploadListener() {
         const file = this.files[0];
         if (file) {
             const reader = new FileReader();
-           photoPreview.style.display = "block";
-           uploadphotocontainer.style.display = "none";
+            photoPreview.style.display = "block";
+            uploadphotocontainer.style.display = "none";
 
-           reader.addEventListener("load", function(){
+            reader.addEventListener("load", function () {
                 photoPreview.setAttribute("src", this.result);
-           });
+            });
 
-           reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
         };
     });
 
