@@ -676,10 +676,8 @@ footer {
 }
 
 .photo-preview{
-	display: none;
 	width: 129px;
 	height: 169px;
-	margin: 20px auto;
 }
 
 #photo-category {
