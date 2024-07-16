@@ -157,7 +157,6 @@ function addingUploadListener() {
     const fileInput = document.getElementById("file-input");
     const submitphotobutton = document.getElementById("submit-photo-button");
     const uploadphotocontainer = document.querySelector(".photo-upload-container");
-    const photoPreview = document.querySelector(".photo-preview");
 
     //linking uploadphoto button with hidden file input button by adding event listener//
     uploadPhotoButton.addEventListener("click", function (event) {
@@ -169,51 +168,54 @@ function addingUploadListener() {
         const file = this.files[0];
         if (file) {
             const reader = new FileReader();
-            photoPreview.style.display = "block";
-            uploadphotocontainer.style.display = "none";
-
             reader.addEventListener("load", function () {
-                photoPreview.setAttribute("src", this.result);
+                uploadphotocontainer.innerHTML = `<img src="${this.result}" alt="photo Preview" class="photo-preview">`
             });
-
+            checkform()
             reader.readAsDataURL(file);
         };
     });
 
-    submitphotobutton.addEventListener("click", async function (event) {
-        event.preventDefault();
+    document.getElementById("photo-title").addEventListener("change", checkform
+    )
+    document.getElementById("photo-category").addEventListener("change", checkform
+    )
+
+    function checkform() {
         const photoTitle = document.getElementById("photo-title").value;
         const photoCategory = document.getElementById("photo-category").value;
         const file = fileInput.files[0];
+        if (photoTitle && photoCategory && file) {
+            submitphotobutton.style.background = "#1D6154";
 
-        if (!photoTitle || !photoCategory || !file) { //ensuring all fields are filled//
-            alert("Veuillez remplir tous les champs et sélectionner une photo.");
-            return;
-        }
+            submitphotobutton.addEventListener("click", async function (event) {
+                event.preventDefault();
 
-        const formData = new FormData();
-        formData.append("title", photoTitle);
-        formData.append("category", photoCategory);
-        formData.append("image", file);
+                const formData = new FormData();
+                formData.append("title", photoTitle);
+                formData.append("category", photoCategory);
+                formData.append("image", file);
 
-        //calling on fetch function//
-        try {
-            const response = await fetch("http://localhost:5678/api/works", {
-                method: "POST",
-                headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
-                body: formData
+                //calling on fetch function//
+                try {
+                    const response = await fetch("http://localhost:5678/api/works", {
+                        method: "POST",
+                        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        location.href = "index.html";
+                    } else {
+                        const errorData = await response.json();
+                        console.error("Error uploading photo:", errorData);
+                    }
+                } catch (error) {
+                    console.error('Erreur:', error);
+                }
             });
-
-            if (response.ok) {
-                location.href = "index.html";
-            } else {
-                const errorData = await response.json();
-                console.error("Error uploading photo:", errorData);
-            }
-        } catch (error) {
-            console.error('Erreur:', error);
         }
-    });
+    }
 }
 addingUploadListener();
 
